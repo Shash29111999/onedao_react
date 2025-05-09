@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from "../auth/AuthContext";
 import { replace, useNavigate } from "react-router-dom";
+import { main_url } from "../config/config";
 
 export default function Login() {
 	const [email, setEmail] = useState("");
@@ -13,7 +14,7 @@ export default function Login() {
 		e.preventDefault();
 		setError(null); // Clear previous errors
 		try {
-			const res = await fetch("http://localhost:8080/api/auth/signin", {
+			const res = await fetch(main_url + "api/auth/signin", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({ email, password }),

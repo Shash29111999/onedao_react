@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { main_url } from '../config/config';
 
 const EditProduct = () => {
   const { id } = useParams();
@@ -11,7 +12,7 @@ const EditProduct = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await fetch(`http://localhost:8080/api/products/${parseInt(id)}`, {
+        const res = await fetch(`${main_url}api/products/${parseInt(id)}`, {
         method: 'GET',
         headers: {
 				Authorization: `Bearer ${sessionStorage.getItem("token")}`,
@@ -48,7 +49,7 @@ const EditProduct = () => {
     e.preventDefault();
     setSaving(true);
     try {
-      const res = await fetch(`http://localhost:8080/api/products/${parseInt(id)}`, {
+      const res = await fetch(`${main_url}api/products/${parseInt(id)}`, {
         method: 'PUT',
         headers: {
 				Authorization: `Bearer ${sessionStorage.getItem("token")}`,

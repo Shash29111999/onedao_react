@@ -3,6 +3,7 @@
 // src/pages/Products.jsx
 import { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import { main_url } from "../config/config";
 
 
 export default function Products() {
@@ -28,7 +29,7 @@ export default function Products() {
 			...Object.fromEntries(Object.entries(filters).filter(([, value]) => value !== "")),
 		}).toString();
 
-		const res = await fetch(`http://localhost:8080/api/products?${queryParams}`, {
+		const res = await fetch(`${main_url}api/products?${queryParams}`, {
 			headers: {
 				Authorization: `Bearer ${sessionStorage.getItem("token")}`,
 				"Content-Type": "application/json",
@@ -58,7 +59,7 @@ export default function Products() {
 
 	const handleDelete = async (id) => {
 		if (!window.confirm("Are you sure you want to delete this product?")) return;
-		await fetch(`http://localhost:8080/api/products/${id}`, {
+		await fetch(`${main_url}api/products/${id}`, {
 			method: "DELETE",
 			headers: {
 				Authorization: `Bearer ${sessionStorage.getItem("token")}`,

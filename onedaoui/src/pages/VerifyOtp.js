@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { main_url } from "../config/config";
 
 export default function VerifyOtp() {
   const [email, setEmail] = useState("");
@@ -22,7 +23,7 @@ export default function VerifyOtp() {
     }
     //handle verification logic here
       try {
-      const res = await fetch("http://localhost:8080/api/auth/verify_otp", {
+      const res = await fetch(main_url +"api/auth/verify_otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email,otp }),
