@@ -51,7 +51,9 @@ const EditProduct = () => {
     try {
       const res = await fetch(`${main_url}api/products/${parseInt(id)}`, {
         method: 'PUT',
+       
         headers: {
+          'Content-Type': 'application/json',
 				Authorization: `Bearer ${sessionStorage.getItem("token")}`,
 			},
         body: JSON.stringify(product),

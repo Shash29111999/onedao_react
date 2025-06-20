@@ -10,6 +10,7 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import { ToastContainer } from "react-toastify";
 import EditProduct from "./components/EditProduct";
+import AddProduct from "./components/AddProduct";
 
 export default function App() {
 	return (
@@ -32,6 +33,14 @@ export default function App() {
 					element={
 						<ProtectedRoute>
 							<EditProduct />
+						</ProtectedRoute>
+					}
+				/>
+				<Route
+					path="/product/add"
+					element={
+						<ProtectedRoute>
+							<AddProduct />
 						</ProtectedRoute>
 					}
 				/>
